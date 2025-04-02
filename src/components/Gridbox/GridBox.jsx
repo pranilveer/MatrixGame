@@ -4,15 +4,34 @@ import "./GridBox.css";
 const GridBox = () => {
   const [grid, setGrid] = useState(Array(9).fill("white"));
   const [clickedBoxes, setClickedBoxes] = useState([]);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const handleClick = (index) => {
-    if(grid[index] === "green") return;
+    if (isAnimating || grid[index] === "green") return;
 
     const newGrid = [...grid];
     newGrid[index] = "green";
     setGrid(newGrid);  
     setClickedBoxes([...clickedBoxes, index]);
+
+    if(clickedBoxes.length === 8){
+        animateBoxes([...clickedBoxes, index]);
+    }
 };
+
+const animateBoxes = (order) =>{
+    setIsAnimating(true);
+    order.forEach((idx, i) => {
+        setTimeout(() =>{
+            setGrid((prev) =>{
+                const newGrid = [...prev];
+                newGrid[idx] = "orange";
+                return newGrid;
+            });
+            if(i === order.length - 1) setIsAnimating(false);
+        }, i * 1000);
+    });
+}
 
   return (
     <div className="container">
