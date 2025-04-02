@@ -3,12 +3,16 @@ import "./GridBox.css";
 
 const GridBox = () => {
   const [grid, setGrid] = useState(Array(9).fill("white"));
+  const [clickedBoxes, setClickedBoxes] = useState([]);
 
   const handleClick = (index) => {
     if(grid[index] === "green") return;
+
     const newGrid = [...grid];
     newGrid[index] = "green";
-    setGrid(newGrid);  };
+    setGrid(newGrid);  
+    setClickedBoxes([...clickedBoxes, index]);
+};
 
   return (
     <div className="container">
