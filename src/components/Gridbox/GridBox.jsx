@@ -11,32 +11,38 @@ const GridBox = () => {
 
     const newGrid = [...grid];
     newGrid[index] = "green";
-    setGrid(newGrid);  
+    setGrid(newGrid);
     setClickedBoxes([...clickedBoxes, index]);
 
-    if(clickedBoxes.length === 8){
-        animateBoxes([...clickedBoxes, index]);
+    if (clickedBoxes.length === 8) {
+      animateBoxes([...clickedBoxes, index]);
     }
-};
+  };
 
-const animateBoxes = (order) =>{
+  const animateBoxes = (order) => {
     setIsAnimating(true);
     order.forEach((idx, i) => {
-        setTimeout(() =>{
-            setGrid((prev) =>{
-                const newGrid = [...prev];
-                newGrid[idx] = "orange";
-                return newGrid;
-            });
-            if(i === order.length - 1) setIsAnimating(false);
-        }, i * 1000);
+      setTimeout(() => {
+        setGrid((prev) => {
+          const newGrid = [...prev];
+          newGrid[idx] = "orange";
+          return newGrid;
+        });
+        if (i === order.length - 1) setIsAnimating(false);
+      }, i * 1000);
     });
-}
+  };
+
+  const resetGrid = () => {
+    setGrid(Array(9).fill("white"));
+    setClickedBoxes([]);
+    setIsAnimating(false);
+  };
 
   return (
     <div className="container">
       <div className="grid-box">
-        {grid.map(( color, index) => (
+        {grid.map((color, index) => (
           <div
             key={index}
             onClick={() => handleClick(index)}
@@ -45,6 +51,11 @@ const animateBoxes = (order) =>{
           ></div>
         ))}
       </div>
+      <button onClick={resetGrid} class="pushable">
+        <span class="shadow"></span>
+        <span class="edge"></span>
+        <span class="front"> Reset </span>
+      </button>
     </div>
   );
 };
