@@ -1,10 +1,11 @@
 import './App.css'
+import GridBox from './components/Gridbox/Gridbox';
 
 function App() {
 
   return (
     <>
-Hello
+      <GridBox />
     </>
   )
 }
