@@ -40,23 +40,23 @@ const GridBox = () => {
   };
 
   return (
-    <div className="container">
-      <div className="grid-box">
-        {grid.map((color, index) => (
-          <div
-            key={index}
-            onClick={() => handleClick(index)}
-            className="box"
-            style={{ backgroundColor: color }}
-          ></div>
-        ))}
+      <div className="container">
+        <div className="grid-box">
+          {grid.map((color, index) => (
+            <div
+              key={index}
+              onClick={() => handleClick(index)}
+              className="box"
+              style={{ backgroundColor: color }}
+            ></div>
+          ))}
+        </div>
+        <button onClick={resetGrid} class="pushable">
+          <span class="shadow"></span>
+          <span class="edge"></span>
+          <span class="front"> Reset </span>
+        </button>
       </div>
-      <button onClick={resetGrid} class="pushable">
-        <span class="shadow"></span>
-        <span class="edge"></span>
-        <span class="front"> Reset </span>
-      </button>
-    </div>
   );
 };
 

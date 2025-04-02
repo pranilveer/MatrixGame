@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    padding: 20px;
+    margin-top: 5rem;
 }
 
 .grid-box {
@@ -22,27 +22,15 @@
     transition: background-color 0.3s ease;
 }
 
-.box:hover{
+.box:hover {
     transform: scale(1.1);
     transition: 0.3s ease;
     box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 
-.reset-button {
-    padding: 10px 20px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .reset-button:hover {
-    background-color: darkred;
-  }
+/* Button CSS */
 
-  .pushable {
+.pushable {
     position: relative;
     border: none;
     background: transparent;
@@ -51,8 +39,9 @@
     outline-offset: 4px;
     transition: filter 250ms;
     margin-top: 2rem;
-  }
-  .shadow {
+}
+
+.shadow {
     position: absolute;
     top: 0;
     left: 0;
@@ -63,23 +52,23 @@
     will-change: transform;
     transform: translateY(2px);
     transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
-  }
-  .edge {
+}
+
+.edge {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border-radius: 12px;
-    background: linear-gradient(
-      to left,
-      hsl(340deg 100% 16%) 0%,
-      hsl(340deg 100% 32%) 8%,
-      hsl(340deg 100% 32%) 92%,
-      hsl(340deg 100% 16%) 100%
-    );
-  }
-  .front {
+    background: linear-gradient(to left,
+            hsl(340deg 100% 16%) 0%,
+            hsl(340deg 100% 32%) 8%,
+            hsl(340deg 100% 32%) 92%,
+            hsl(340deg 100% 16%) 100%);
+}
+
+.front {
     display: block;
     position: relative;
     padding: 12px 42px;
@@ -90,30 +79,66 @@
     will-change: transform;
     transform: translateY(-4px);
     transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
-  }
+}
 
-  .pushable:hover {
+.pushable:hover {
     filter: brightness(110%);
-  }
+}
 
-  .pushable:hover .front {
+.pushable:hover .front {
     transform: translateY(-6px);
     transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
-  }
-  .pushable:active .front {
+}
+
+.pushable:active .front {
     transform: translateY(-2px);
     transition: transform 34ms;
-  }
+}
 
-  .pushable:hover .shadow {
+.pushable:hover .shadow {
     transform: translateY(4px);
     transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
-  }
-  .pushable:active .shadow {
+}
+
+.pushable:active .shadow {
     transform: translateY(1px);
     transition: transform 34ms;
-  }
+}
 
-  .pushable:focus:not(:focus-visible) {
+.pushable:focus:not(:focus-visible) {
     outline: none;
-  }
+}
+
+@media screen and (max-width:500px) {
+    .grid-box {
+        grid-template-columns: repeat(3, 70px);
+        gap: 20px;
+    }
+    
+    .box {
+        width: 70px;
+        height: 70px;
+    }
+
+    .front {
+        padding: 11px 35px;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .grid-box {
+        grid-template-columns: repeat(3, 60px);
+        gap: 15px;
+    }
+    
+    .box {
+        width: 60px;
+        height: 60px;
+    }
+
+    .front {
+        padding: 10px 30px;
+        font-size: 1rem;
+    }
+}
